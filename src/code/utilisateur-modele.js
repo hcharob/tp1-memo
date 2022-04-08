@@ -39,7 +39,6 @@ export function deconnexion() {
  * le fournisseur Google Auth
  */
 function sauvegarderProfil(util) {
-
     setDoc(
         doc(bdFirestore, 'memo', util.uid), 
         {nom: util.displayName, courriel: util.email}, 
