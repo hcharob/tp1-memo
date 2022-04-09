@@ -20,9 +20,8 @@ export default function Appli() {
   const [ouvert, setOuvert] = useState(false);
 
    // Gérer l'ajout d'un dossier
-   function gererAjoutTache(titre, texteTache) {
+   function gererAjoutTache(texteTache) {
     tacheModele.creer(utilisateur.uid, {
-      titre: titre,
       texteTache: texteTache
     }).then(
       doc => setTaches([{id: doc.id, ...doc.data()}, ...taches])
