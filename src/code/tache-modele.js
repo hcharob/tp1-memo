@@ -20,16 +20,12 @@ export async function lireTout(idUtilisateur) {
  */
 export async function creer(idUtilisateur, tache) {
     // On ajoute dateModif à l'objet tache
-    // Remarquez que nous utilisons l'objet Timestamp de Firestore pour obtenir
-    // un objet date contenant le temps au serveur...
     tache.dateModif = Timestamp.now();
     // Référence à la collection dans laquelle on veut ajouter la tâche
     let coll = collection(bdFirestore, 'memo', idUtilisateur, 'taches');
-    // Ajout de la tâche avec addDoc : retourne une promesse contenant une 
-    // "référence" Firestore au document ajouté
+    // Ajout de la tâche avec addDoc : retourne une promesse contenant une "référence" Firestore au document ajouté
     let refDoc = await addDoc(coll, tache);
-    // On utilise la référence pour obtenir l'objet représentant le document
-    // ajouté grâce à la fonction getDoc (au singulier !) : cette fonction retourne
-    // une promesse, d'où l'utilisation de 'await'...
+    // On utilise la référence pour obtenir l'objet représentant le document ajouté grâce à la fonction getDoc: 
+    // cette fonction retourne une promesse, d'où l'utilisation de 'await'...
     return await getDoc(refDoc);
 }

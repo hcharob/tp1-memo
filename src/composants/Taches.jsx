@@ -13,7 +13,7 @@ export default function Taches({utilisateur, taches, setTaches}) {
     )
     , [utilisateur, setTaches]
   );
-
+// Fonction qui gère l'ajout des tâches
   function gererAjoutTache(texteTache) {
     tacheModele.creer(utilisateur.uid, {
       texteTache: texteTache
@@ -37,7 +37,6 @@ export default function Taches({utilisateur, taches, setTaches}) {
         />
       </form>
       <div className="liste-taches">
-      {/* <Tache /> */}
       {
         taches.map( 
           tache =>  <li key={tache.texteTache} >
@@ -46,5 +45,6 @@ export default function Taches({utilisateur, taches, setTaches}) {
       }
       </div>
     </section>
+    
   );
 }

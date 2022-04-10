@@ -3,7 +3,7 @@ import { signInWithPopup, onAuthStateChanged } from 'firebase/auth';
 import { doc, setDoc } from 'firebase/firestore';
 
 /**
- * @param {Function} mutateurEtatUtilisateur 
+ * @param {Function} mutateurEtatUtilisateur //référence à la fonction 'setter' de l'état 'utilisateur'                                        
  */
  export function observerEtatConnexion(mutateurEtatUtilisateur) {
     onAuthStateChanged(authFirebase, 
@@ -12,6 +12,7 @@ import { doc, setDoc } from 'firebase/firestore';
             if(util) {
                 sauvegarderProfil(util);
             }
+             // Dans tous les cas (null ou utilisateur existant), on modifie l'état pour permettre à React de mettre à jour le UI...
             mutateurEtatUtilisateur(util);
         }
     )

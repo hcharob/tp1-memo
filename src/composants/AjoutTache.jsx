@@ -1,12 +1,9 @@
 import Button from '@mui/material/Button';
-import TextField from '@mui/material/TextField';
 import Dialog from '@mui/material/Dialog';
 import DialogActions from '@mui/material/DialogActions';
-import DialogContent from '@mui/material/DialogContent';
-import DialogTitle from '@mui/material/DialogTitle';
 import { useState } from 'react';
 
-export default function AjoutTache({ ouvert, setOuvert, gererAjoutTache }) {
+export default function AjoutDossier({ ouvert, setOuvert, gererAjoutTache }) {
     const [texteTache, setTexteTache] = useState('');
 
     const gererOuvrir = () => {
@@ -23,8 +20,8 @@ export default function AjoutTache({ ouvert, setOuvert, gererAjoutTache }) {
 
 		function gererSoumettre() {
 			// Code qui gère l'ajout dans Firestore
-            if(texteTache.search(/[a-z]{2,}/i) != -1) {
-                gererAjoutTache(texteTache);
+            if(titre.search(/[a-z]{2,}/i) != -1) {
+                gererAjoutDossier(texteTache);
                 gererFermer();
             }
 		}
@@ -32,20 +29,6 @@ export default function AjoutTache({ ouvert, setOuvert, gererAjoutTache }) {
     return (
         <div>
             <Dialog open={ouvert} onClose={gererFermer}>
-                <DialogTitle>Ajouter une tâche</DialogTitle>
-                <DialogContent>
-                    {/* Description de la tâche */}
-                    <TextField
-                        margin="dense"
-                        id="texteTache"
-                        label="Description de la tâche"
-                        type="text"
-                        fullWidth
-                        variant="standard"
-                        style={{ marginBottom: "1.5rem" }}
-                        onChange={e => setTexteTache(e.target.value)}
-                    />
-                </DialogContent>
                 <DialogActions>
                     <Button onClick={gererFermer}>Annuler</Button>
                     <Button onClick={gererSoumettre}>Soumettre</Button>
