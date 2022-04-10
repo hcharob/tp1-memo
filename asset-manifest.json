@@ -1,0 +1,13 @@
+{
+  "files": {
+    "main.css": "/tp1-memo/static/css/main.b4dcfac1.css",
+    "main.js": "/tp1-memo/static/js/main.2209f8a9.js",
+    "index.html": "/tp1-memo/index.html",
+    "main.b4dcfac1.css.map": "/tp1-memo/static/css/main.b4dcfac1.css.map",
+    "main.2209f8a9.js.map": "/tp1-memo/static/js/main.2209f8a9.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.b4dcfac1.css",
+    "static/js/main.2209f8a9.js"
+  ]
+}
