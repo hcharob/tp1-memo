@@ -6,17 +6,20 @@ import { useState } from 'react';
 
 export default function Taches({utilisateur, taches, setTaches}) {
   const [texteTache, setTexteTache] = useState('');
+
   // Lire les dossiers (de l'utilisateur connecté) dans Firestore
   useEffect(
     () => tacheModele.lireTout(utilisateur.uid).then(
-      lesTaches => setTaches(lesTaches)
+      lesTaches => setTaches(lesTaches) 
     )
     , [utilisateur, setTaches]
   );
+
 // Fonction qui gère l'ajout des tâches
   function gererAjoutTache(texteTache) {
     tacheModele.creer(utilisateur.uid, {
       texteTache: texteTache
+      
     }).then(
       doc => setTaches([{id: doc.id, ...doc.data()}, ...taches])
     );
@@ -24,7 +27,7 @@ export default function Taches({utilisateur, taches, setTaches}) {
 
   return (
     <section className="Taches">
-      <form  onSubmit={e => {gererAjoutTache(texteTache)}  }>
+      <form onSubmit={e => {gererAjoutTache(texteTache); e.preventDefault(); setTexteTache('');} } >
         <input 
           type="text"   
           placeholder="Ajoutez une tâche ..." 
